@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NofarAI · AI Content Creator</title>
+<meta name="description" content="NofarAI — הופכים רעיונות לסרטונים ותמונות שאי אפשר להתעלם מהם. תוכן AI לרשתות, פרסומות וסרטוני מוצר.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'GveretLevin';src:url('GveretLevin.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap;}
+@font-face{font-family:'MPLUSRounded';src:url('MPLUSRounded1c-Thin.ttf') format('truetype');font-weight:100 300;font-style:normal;font-display:swap;}
+@font-face{font-family:'MPLUSRounded';src:url('MPLUSRounded1c-Medium.ttf') format('truetype');font-weight:400 600;font-style:normal;font-display:swap;}
+@font-face{font-family:'MPLUSRounded';src:url('MPLUSRounded1c-ExtraBold.ttf') format('truetype');font-weight:700 900;font-style:normal;font-display:swap;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#FAFAF8;color:#2a1a47;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+::selection{background:#F5D97A;color:#3C2464;}
+input::placeholder,textarea::placeholder{color:#C8B4E8;opacity:1;}
+@keyframes nofarPulse{0%,100%{transform:scale(1);box-shadow:0 8px 24px rgba(60,36,100,.22);}50%{transform:scale(1.07);box-shadow:0 12px 32px rgba(60,36,100,.32);}}
+#mobileCTA{display:none;}
+@media (max-width:980px){
+  #contactGrid{grid-template-columns:1fr!important;}
+  #contactPortrait{max-width:300px!important;}
+}
+@media (max-width:900px){#pricingGrid{grid-template-columns:repeat(2,1fr)!important;}}
+@media (max-width:880px){
+  #navLinks{display:none!important;}
+  #navCTA{display:none!important;}
+  #mobileCTA{display:block!important;}
+  body{padding-bottom:84px;}
+}
+@media (max-width:760px){
+  #bentoGrid{grid-template-columns:repeat(2,1fr)!important;}
+  #whyGrid{gap:8px!important;}
+  #servicesInner{grid-template-columns:1fr!important;}
+  #stepsRow{flex-direction:column!important;gap:0!important;}
+  #stepsLine{display:none!important;}
+  .stepItem{flex-direction:row!important;text-align:right!important;gap:18px!important;padding:14px 0!important;align-items:flex-start!important;}
+  .stepItem .stepText{text-align:right!important;}
+}
+@media (max-width:520px){#pricingGrid{grid-template-columns:1fr!important;}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+/* interaction states */
+[data-h0]:hover{transform:translateY(-2px) !important; box-shadow:0 8px 26px rgba(245,217,122,.7) !important;}
+[data-h1]:hover{transform:translateY(-3px) scale(1.02) !important; box-shadow:0 14px 34px rgba(245,217,122,.75) !important;}
+[data-h2]:hover{border-color:#F5D97A !important; box-shadow:0 22px 50px rgba(0,0,0,.28) !important;}
+[data-h3]:hover{transform:translateY(-4px) !important; box-shadow:0 18px 40px rgba(60,36,100,.3) !important;}
+[data-h4]:hover{transform:translateY(-4px) !important; box-shadow:0 18px 40px rgba(60,36,100,.3) !important;}
+[data-h5]:hover{transform:translateY(-4px) !important; box-shadow:0 18px 40px rgba(60,36,100,.3) !important;}
+[data-h6]:hover{transform:translateY(-5px) !important; box-shadow:0 18px 40px rgba(60,36,100,.13) !important;}
+[data-h7]:hover{transform:translateY(-5px) !important; box-shadow:0 18px 40px rgba(60,36,100,.13) !important;}
+[data-h8]:hover{transform:translateY(-5px) !important; box-shadow:0 20px 44px rgba(60,36,100,.3) !important;}
+[data-h9]:hover{background:#3C2464 !important; color:#fff !important;}
+[data-h10]:focus{border-color:#F5D97A !important;}
+[data-h11]:focus{border-color:#F5D97A !important;}
+[data-h12]:hover{transform:translateY(-3px) scale(1.01) !important; box-shadow:0 16px 38px rgba(245,217,122,.6) !important;}
+</style>
+</head>
+<body>
+<div dir="rtl" style="font-family:'MPLUSRounded',sans-serif;">
+
+  <!-- ===== NAV ===== -->
+  <nav id="nofarNav" style="position:fixed;top:0;right:0;left:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:18px 5vw;transition:background .3s ease, box-shadow .3s ease, padding .3s ease;">
+    <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none;">
+      <svg width="38" height="38" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#3C2464"/><polygon points="16,13 16,31 32,22" fill="#F5D97A"/><circle cx="31" cy="11" r="5" fill="#F5D97A"/></svg>
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:23px;color:#3C2464;letter-spacing:-.5px;">Nofar<span style="color:#E8B93A;">AI</span></span>
+    </a>
+    <div id="navLinks" style="display:flex;align-items:center;gap:36px;font-family:'MPLUSRounded',sans-serif;font-weight:500;font-size:16px;">
+      <a href="#work" style="color:#3C2464;text-decoration:none;opacity:.85;">עבודות</a>
+      <a href="#services" style="color:#3C2464;text-decoration:none;opacity:.85;">שירותים</a>
+      <a href="#pricing" style="color:#3C2464;text-decoration:none;opacity:.85;">מחירון</a>
+      <a href="#contact" style="color:#3C2464;text-decoration:none;opacity:.85;">יצירת קשר</a>
+    </div>
+    <a id="navCTA" href="#ideaForm" style="font-family:'MPLUSRounded',sans-serif;font-weight:700;font-size:15px;color:#3C2464;background:#F5D97A;padding:12px 24px;border-radius:40px;text-decoration:none;box-shadow:0 4px 18px rgba(245,217,122,.5);transition:transform .2s ease, box-shadow .2s ease;" data-h0="1">לקבלת הצעת מחיר</a>
+  </nav>
+
+  <div id="navSentinel" style="position:absolute;top:0;height:60px;width:1px;pointer-events:none;"></div>
+  <!-- ===== HERO ===== -->
+  <header id="top" style="position:relative;">
+    <a id="heroAnchor" href="#work" style="display:none;">work</a>
+    <div id="heroHeader" style="position:relative;min-height:100svh;background:#FFF8E6;overflow:hidden;display:flex;flex-direction:column;">
+      <img id="heroImg" src="hero.png" alt="יוצרת NofarAI מחזיקה טלפון ענק עם המסך — Create content that looks real" style="position:absolute;top:-6%;left:0;width:100%;height:112%;object-fit:cover;object-position:center 18%;will-change:transform;"/>
+      <div style="position:absolute;top:0;left:0;right:0;height:34%;background:linear-gradient(180deg, rgba(255,248,230,.93) 0%, rgba(255,248,230,.66) 46%, rgba(255,248,230,0) 100%);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:44%;background:linear-gradient(0deg, rgba(255,248,230,.95) 0%, rgba(255,248,230,.74) 38%, rgba(255,248,230,0) 100%);pointer-events:none;"></div>
+      <div style="position:relative;z-index:2;text-align:center;padding:clamp(98px,13vh,142px) 6vw 0;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#9B72CC;margin-bottom:16px;">NofarAI · AI Content Creator</div>
+        <h1 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(36px,5vw,66px);line-height:1.05;letter-spacing:-.01em;color:#3C2464;margin:0 auto;max-width:680px;text-wrap:balance;text-shadow:0 2px 22px rgba(255,248,230,.95), 0 1px 4px rgba(255,248,230,.9);">הופכים רעיונות לסרטונים ותמונות שאי אפשר להתעלם מהם</h1>
+      </div>
+      <div style="flex:1;min-height:12vh;"></div>
+      <div style="position:relative;z-index:2;text-align:center;padding:0 6vw clamp(46px,7vh,76px);">
+        <p style="font-family:'MPLUSRounded',sans-serif;font-weight:400;font-size:clamp(16px,1.5vw,19px);line-height:1.7;color:#4a3a63;max-width:520px;margin:0 auto 26px;text-shadow:0 1px 12px rgba(255,248,230,.95);">פרסומות, סרטוני מוצר, תוכן לרשתות ותמונות שיווקיות, בעזרת AI וקונספט מותאם אישית.</p>
+        <a href="#ideaForm" style="font-family:'MPLUSRounded',sans-serif;font-weight:700;font-size:19px;color:#3C2464;background:#F5D97A;padding:18px 38px;border-radius:46px;text-decoration:none;box-shadow:0 8px 26px rgba(245,217,122,.55);transition:transform .2s ease, box-shadow .2s ease;" data-h1="1">לקבלת הצעת מחיר</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== WORK / BENTO ===== -->
+  <section id="work" style="background:#FAFAF8;padding:clamp(72px,9vw,120px) 5vw;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);margin-bottom:42px;text-align:right;">
+        <h2 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:-.01em;color:#3C2464;margin:0;">טעימה קטנה ממה שאפשר ליצור</h2>
+      </div>
+      <div id="bentoGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1140px;margin:0 auto;">
+
+        <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);position:relative;border-radius:22px;overflow:hidden;border:1px solid #E6D8F6;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);aspect-ratio:9/16;">
+          <div data-vph style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);pointer-events:none;transition:opacity .5s ease;"><svg width="40" height="40" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="none" stroke="#C8B4E8" stroke-width="1.5"/><polygon points="17,13 17,31 32,22" fill="#C8B4E8"/></svg><div style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#B49AD6;">וידאו</div></div>
+          <video src="reel-1.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        </div>
+
+        <div data-reveal data-delay="80" style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);position:relative;border-radius:22px;overflow:hidden;border:1px solid #E6D8F6;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);aspect-ratio:9/16;">
+          <div data-vph style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);pointer-events:none;transition:opacity .5s ease;"><svg width="40" height="40" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="none" stroke="#C8B4E8" stroke-width="1.5"/><polygon points="17,13 17,31 32,22" fill="#C8B4E8"/></svg><div style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#B49AD6;">וידאו</div></div>
+          <video src="reel-3.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        </div>
+
+        <div data-reveal data-delay="160" style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);position:relative;border-radius:22px;overflow:hidden;border:1px solid #E6D8F6;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);aspect-ratio:9/16;">
+          <div data-vph style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);pointer-events:none;transition:opacity .5s ease;"><svg width="40" height="40" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="none" stroke="#C8B4E8" stroke-width="1.5"/><polygon points="17,13 17,31 32,22" fill="#C8B4E8"/></svg><div style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#B49AD6;">וידאו</div></div>
+          <video src="reel-4.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        </div>
+
+        <div data-reveal data-delay="240" style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);position:relative;border-radius:22px;overflow:hidden;border:1px solid #E6D8F6;background:#241141;aspect-ratio:9/16;">
+          <div data-vph style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:linear-gradient(165deg,#F2E8FF,#E2D0F5);pointer-events:none;transition:opacity .5s ease;"><svg width="40" height="40" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="none" stroke="#C8B4E8" stroke-width="1.5"/><polygon points="17,13 17,31 32,22" fill="#C8B4E8"/></svg><div style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#B49AD6;">וידאו</div></div>
+          <video src="reel-2.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(24px) saturate(1.12);transform:scale(1.18);"></video>
+          <video src="reel-2.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></video>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES (deep violet) ===== -->
+  <section id="services" style="background:#3C2464;padding:clamp(76px,9vw,120px) 5vw;position:relative;overflow:hidden;">
+    <img src="jump.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;opacity:.32;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(60,36,100,.86) 0%, rgba(60,36,100,.7) 45%, rgba(60,36,100,.9) 100%);"></div>
+    <div style="position:absolute;top:-20%;left:-10%;width:50vw;height:60vh;background:radial-gradient(ellipse at center, rgba(155,114,204,.35), rgba(155,114,204,0) 70%);pointer-events:none;"></div>
+    <div style="max-width:1100px;margin:0 auto;position:relative;">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);text-align:center;margin-bottom:50px;">
+        <h2 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:-.01em;color:#fff;margin:0;">שני דברים ברמה אחרת</h2>
+      </div>
+      <div id="servicesGrid">
+        <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;background:rgba(255,255,255,.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(200,180,232,.28);border-radius:26px;padding:clamp(26px,3.5vw,44px);" data-h2="1">
+          <div id="servicesInner" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);text-align:center;">
+            <div style="position:relative;width:100%;max-width:232px;margin:0 auto;aspect-ratio:941/1672;border-radius:16px;overflow:hidden;border:1px solid rgba(200,180,232,.3);box-shadow:0 10px 28px rgba(0,0,0,.28);">
+              <img src="service-video.png" alt="סרטוני AI · NofarAI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"/>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(42,23,71,.92) 0%, rgba(42,23,71,.6) 36%, rgba(42,23,71,.1) 68%, rgba(42,23,71,.2) 100%);pointer-events:none;"></div>
+              <div style="position:absolute;top:0;left:0;right:0;padding:18px 14px;text-align:center;">
+                <h3 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:22px;color:#fff;margin:0 0 8px;text-shadow:0 2px 10px rgba(0,0,0,.45);">סרטוני AI</h3>
+                <div style="width:26px;height:2px;background:#F5D97A;border-radius:2px;margin:0 auto 12px;"></div>
+                <p style="font-family:'MPLUSRounded',sans-serif;font-weight:400;font-size:12.5px;line-height:1.55;color:#EFE6FA;margin:0;text-shadow:0 1px 8px rgba(0,0,0,.5);">פרסומות, סרטוני מוצר, תדמית, רילס, אירועים ותוכן לרשתות. מקונספט ראשון ועד גרסה מוכנה לעלייה.</p>
+              </div>
+            </div>
+            <div style="position:relative;width:100%;max-width:232px;margin:0 auto;aspect-ratio:941/1672;border-radius:16px;overflow:hidden;border:1px solid rgba(200,180,232,.3);box-shadow:0 10px 28px rgba(0,0,0,.28);">
+              <img src="service-image.png" alt="תמונות AI · NofarAI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"/>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(42,23,71,.92) 0%, rgba(42,23,71,.6) 36%, rgba(42,23,71,.1) 68%, rgba(42,23,71,.2) 100%);pointer-events:none;"></div>
+              <div style="position:absolute;top:0;left:0;right:0;padding:18px 14px;text-align:center;">
+                <h3 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:22px;color:#fff;margin:0 0 8px;text-shadow:0 2px 10px rgba(0,0,0,.45);">תמונות AI</h3>
+                <div style="width:26px;height:2px;background:#F5D97A;border-radius:2px;margin:0 auto 12px;"></div>
+                <p style="font-family:'MPLUSRounded',sans-serif;font-weight:400;font-size:12.5px;line-height:1.55;color:#EFE6FA;margin:0;text-shadow:0 1px 8px rgba(0,0,0,.5);">תמונות מוצר, תוכן שיווקי, קמפיינים, מותגים ורשתות חברתיות. ויזואל שנראה אמיתי לחלוטין.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section id="pricing" style="background:#FFF8E6;padding:clamp(76px,9vw,120px) 5vw;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);text-align:center;margin-bottom:42px;">
+        <h2 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(28px,3.7vw,44px);line-height:1.12;letter-spacing:-.01em;color:#3C2464;margin:0;">למה סרטון בבינה מלאכותית?</h2>
+      </div>
+      <div id="whyGrid" data-reveal data-delay="80" style="opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:0 auto 56px;">
+        <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 12px 30px rgba(60,36,100,.2);display:flex;align-items:center;justify-content:center;transition:transform .3s ease, box-shadow .3s ease;" data-h3="1">
+          <img src="why-1.png" alt="ללא ימי צילומים" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.64) saturate(1.05);"/>
+          <div style="position:absolute;inset:0;background:rgba(60,36,100,.42);"></div>
+          <div style="position:relative;padding:16px;text-align:center;font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(17px,2.2vw,24px);color:#F5D97A;line-height:1.2;text-shadow:0 2px 16px rgba(0,0,0,.6);">ללא ימי צילומים</div>
+        </div>
+        <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 12px 30px rgba(60,36,100,.2);display:flex;align-items:center;justify-content:center;transition:transform .3s ease, box-shadow .3s ease;" data-h4="1">
+          <img src="why-2.png" alt="בלי לוקיישנים או צוות" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.64) saturate(1.05);"/>
+          <div style="position:absolute;inset:0;background:rgba(60,36,100,.42);"></div>
+          <div style="position:relative;padding:16px;text-align:center;font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(17px,2.2vw,24px);color:#F5D97A;line-height:1.2;text-shadow:0 2px 16px rgba(0,0,0,.6);">בלי לוקיישנים או צוות</div>
+        </div>
+        <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 12px 30px rgba(60,36,100,.2);display:flex;align-items:center;justify-content:center;transition:transform .3s ease, box-shadow .3s ease;" data-h5="1">
+          <img src="why-3.png" alt="אפשר ליצור כל מה שעולה לדמיון" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.64) saturate(1.05);"/>
+          <div style="position:absolute;inset:0;background:rgba(60,36,100,.42);"></div>
+          <div style="position:relative;padding:16px;text-align:center;font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(17px,2.2vw,24px);color:#F5D97A;line-height:1.2;text-shadow:0 2px 16px rgba(0,0,0,.6);">אפשר ליצור כל מה שעולה לדמיון</div>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);text-align:center;margin-bottom:42px;">
+        <h2 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:-.01em;color:#3C2464;margin:0;">מחירון</h2>
+      </div>
+
+      <div id="pricingGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:0 auto;">
+        <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;background:#fff;border:1px solid #EFE6F5;border-radius:20px;padding:34px 28px;box-shadow:0 6px 22px rgba(60,36,100,.05);" data-h6="1">
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:20px;color:#3C2464;">סרטוני AI</div>
+          <div style="width:26px;height:2px;background:#F5D97A;border-radius:2px;margin:18px 0 16px;"></div>
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:500;font-size:14px;color:#9B72CC;margin-bottom:5px;">החל מ־</div>
+          <div style="display:flex;align-items:baseline;gap:6px;"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;color:#3C2464;">999</span><span style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:20px;color:#9B72CC;">₪</span></div>
+        </div>
+        <div data-reveal data-delay="80" style="opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;background:#fff;border:1px solid #EFE6F5;border-radius:20px;padding:34px 28px;box-shadow:0 6px 22px rgba(60,36,100,.05);" data-h7="1">
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:20px;color:#3C2464;">תמונות AI</div>
+          <div style="width:26px;height:2px;background:#F5D97A;border-radius:2px;margin:18px 0 16px;"></div>
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:500;font-size:14px;color:#9B72CC;margin-bottom:5px;">החל מ־</div>
+          <div style="display:flex;align-items:baseline;gap:6px;"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;color:#3C2464;">350</span><span style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:20px;color:#9B72CC;">₪</span></div>
+        </div>
+        <div data-reveal data-delay="160" style="opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;background:#3C2464;border:1px solid #3C2464;border-radius:20px;padding:34px 28px;box-shadow:0 10px 30px rgba(60,36,100,.18);" data-h8="1">
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:20px;color:#fff;">חבילות משולבות</div>
+          <div style="width:26px;height:2px;background:#F5D97A;border-radius:2px;margin:18px 0 16px;"></div>
+          <div style="font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:22px;color:#F5D97A;line-height:1.35;">בהצעת מחיר<br>מותאמת</div>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);text-align:center;margin-top:36px;">
+        <a href="#ideaForm" style="display:inline-block;font-family:'MPLUSRounded',sans-serif;font-weight:600;font-size:16px;color:#3C2464;background:transparent;border:1.5px solid #3C2464;padding:14px 30px;border-radius:44px;text-decoration:none;transition:background .25s ease, color .25s ease;" data-h9="1">לקבלת הצעת מחיר מותאמת</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== IMPORTANT TO KNOW ===== -->
+  <section style="background:#F2E8FF;padding:clamp(56px,7vw,90px) 5vw;">
+    <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);max-width:880px;margin:0 auto;">
+      <h3 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(24px,3vw,34px);color:#3C2464;margin:0 0 26px;text-align:right;">חשוב לדעת</h3>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:flex-start;gap:14px;"><div style="width:9px;height:9px;border-radius:50%;background:#F5D97A;flex-shrink:0;margin-top:9px;"></div><div style="font-family:'MPLUSRounded',sans-serif;font-weight:300;font-size:17px;line-height:1.6;color:#4a3a63;">המחירים הם מחירי התחלה.</div></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;"><div style="width:9px;height:9px;border-radius:50%;background:#F5D97A;flex-shrink:0;margin-top:9px;"></div><div style="font-family:'MPLUSRounded',sans-serif;font-weight:300;font-size:17px;line-height:1.6;color:#4a3a63;">המחיר הסופי נקבע לפי מורכבות הפרויקט.</div></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;"><div style="width:9px;height:9px;border-radius:50%;background:#F5D97A;flex-shrink:0;margin-top:9px;"></div><div style="font-family:'MPLUSRounded',sans-serif;font-weight:300;font-size:17px;line-height:1.6;color:#4a3a63;">פרויקטים גדולים מתומחרים בנפרד.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="background:#3C2464;padding:clamp(76px,9vw,120px) 5vw;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:-15%;right:-10%;width:50vw;height:60vh;background:radial-gradient(ellipse at center, rgba(155,114,204,.4), rgba(155,114,204,0) 70%);pointer-events:none;"></div>
+    <div id="contactGrid" style="position:relative;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1fr;gap:clamp(30px,5vw,64px);align-items:center;">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);">
+        <div id="contactPortrait" style="border-radius:26px;overflow:hidden;aspect-ratio:1024/1284;width:100%;max-width:460px;margin-inline:auto;box-shadow:0 26px 60px rgba(0,0,0,.35);background:#F4E08C;"><img src="portrait.png" alt="יוצרת NofarAI" style="width:100%;height:100%;object-fit:cover;"/></div>
+      </div>
+      <div data-reveal data-delay="120" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);">
+        <h2 style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-.01em;color:#fff;margin:0 0 28px;">יש לכם רעיון?<br>בואו נהפוך אותו למציאות.</h2>
+        <form id="ideaForm" style="scroll-margin-top:110px;">
+          <div id="formInner" style="display:flex;flex-direction:column;gap:16px;">
+            <textarea id="ideaText" rows="4" required placeholder="ספרו בקצרה מה אתם רוצים ליצור." style="font-family:'MPLUSRounded',sans-serif;font-size:16px;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(200,180,232,.3);border-radius:16px;padding:16px 18px;resize:vertical;outline:none;transition:border-color .25s ease;" data-h10="1"></textarea>
+            <input id="ideaContact" type="text" required placeholder="מייל או טלפון לחזרה" style="font-family:'MPLUSRounded',sans-serif;font-size:16px;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(200,180,232,.3);border-radius:16px;padding:16px 18px;outline:none;transition:border-color .25s ease;" data-h11="1"/>
+            <button type="submit" style="font-family:'MPLUSRounded',sans-serif;font-weight:700;font-size:18px;color:#3C2464;background:#F5D97A;border:none;padding:18px 28px;border-radius:46px;cursor:pointer;box-shadow:0 10px 30px rgba(245,217,122,.4);transition:transform .2s ease, box-shadow .2s ease;margin-top:4px;" data-h12="1">קבלו הצעת מחיר</button>
+          </div>
+          <div id="formSuccess" style="display:none;flex-direction:column;align-items:flex-start;gap:16px;padding:30px 0;">
+            <div style="width:64px;height:64px;border-radius:50%;background:#F5D97A;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M8 17 L14 23 L25 10" fill="none" stroke="#3C2464" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div style="font-family:'MPLUSRounded',sans-serif;font-weight:800;font-size:28px;color:#fff;line-height:1.3;">נשלח! נחזור אליך בהקדם</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#2A1A47;padding:46px 5vw;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:14px;">
+      <svg width="34" height="34" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#C8B4E8"/><polygon points="16,13 16,31 32,22" fill="#3C2464"/><circle cx="31" cy="11" r="5" fill="#F5D97A"/></svg>
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:#fff;letter-spacing:-.5px;">Nofar<span style="color:#F5D97A;">AI</span></span>
+    </div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9B72CC;margin-bottom:18px;">Create content that looks real</div>
+    <div style="width:30px;height:2px;background:#F5D97A;border-radius:2px;margin:0 auto 18px;"></div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:#7a6a99;">© 2026 NofarAI · AI Content Creator</div>
+  </footer>
+
+  <!-- mobile sticky CTA -->
+  <a id="mobileCTA" href="#ideaForm" style="position:fixed;bottom:0;right:0;left:0;z-index:300;background:#F5D97A;color:#3C2464;font-family:'MPLUSRounded',sans-serif;font-weight:700;font-size:17px;text-align:center;text-decoration:none;padding:18px;box-shadow:0 -4px 20px rgba(60,36,100,.18);">לקבלת הצעת מחיר</a>
+
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const root = document;
+
+    // ---- scroll reveal ----
+    const reveals = Array.from(root.querySelectorAll('[data-reveal]'));
+    if (reduce) {
+      reveals.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const el = e.target;
+            const d = parseFloat(el.dataset.delay || '0');
+            setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+      reveals.forEach(el => io.observe(el));
+    }
+
+    // ---- gold line stretch ----
+    const lines = Array.from(root.querySelectorAll('[data-goldline]'));
+    if (reduce) {
+      lines.forEach(el => { el.style.width = el.dataset.w || '30px'; });
+    } else {
+      const io2 = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.style.width = e.target.dataset.w || '30px'; io2.unobserve(e.target); }
+        });
+      }, { threshold: 0.5 });
+      lines.forEach(el => io2.observe(el));
+    }
+
+    // ---- nav scroll state (IntersectionObserver — robust to any scroll container) ----
+    const nav = root.getElementById('nofarNav');
+    const setNav = (filled) => {
+      if (!nav) return;
+      if (filled) {
+        nav.style.background = 'rgba(255,248,230,.9)';
+        nav.style.backdropFilter = 'blur(12px)';
+        nav.style.webkitBackdropFilter = 'blur(12px)';
+        nav.style.boxShadow = '0 1px 0 rgba(60,36,100,.08), 0 6px 24px rgba(60,36,100,.06)';
+        nav.style.padding = '12px 5vw';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.webkitBackdropFilter = 'none';
+        nav.style.boxShadow = 'none';
+        nav.style.padding = '18px 5vw';
+      }
+    };
+    const sentinel = root.getElementById('navSentinel');
+    if (sentinel) {
+      const io3 = new IntersectionObserver((entries) => {
+        setNav(!entries[0].isIntersecting);
+      }, { threshold: 0 });
+      io3.observe(sentinel);
+    }
+    setNav(false);
+
+    // ---- hero parallax (enhancement; window scroll) ----
+    const heroImg = root.getElementById('heroImg');
+    if (heroImg && !reduce) {
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(() => {
+            const y = window.scrollY || document.documentElement.scrollTop || 0;
+            heroImg.style.transform = 'translateY(' + (y * 0.06) + 'px)';
+            ticking = false;
+          });
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    }
+
+    // ---- form submit (imperative, no re-render) ----
+    const form = root.getElementById('ideaForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const txt = (root.getElementById('ideaText') || {}).value || '';
+        const contact = (root.getElementById('ideaContact') || {}).value || '';
+        const phone = '972503555277';
+        let message = 'היי נופר! ' + txt;
+        if (contact) message += '\n\nאיך לחזור אליי: ' + contact;
+        const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message);
+        window.open(url, '_blank');
+        const inner = root.getElementById('formInner');
+        const ok = root.getElementById('formSuccess');
+        if (inner) inner.style.display = 'none';
+        if (ok) ok.style.display = 'flex';
+      });
+    }
+
+    // ---- work videos: reveal the player as soon as a frame is ready, and keep it playing ----
+    const vids = Array.from(root.querySelectorAll('#bentoGrid video'));
+    vids.forEach((v) => {
+      v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+      const ph = v.parentElement && v.parentElement.querySelector('[data-vph]');
+      const hide = () => { if (ph) ph.style.display = 'none'; };
+      const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+      const ready = () => { hide(); tryPlay(); };
+      v.addEventListener('loadeddata', ready);
+      v.addEventListener('canplay', ready);
+      v.addEventListener('playing', hide);
+      if (v.readyState >= 2) ready();
+      // nudge any clip that gets paused (tab refocus, etc.) back into its loop
+      v.addEventListener('pause', () => { if (!v.ended && v.currentTime > 0) tryPlay(); });
+    });
+
+    // ---- quote CTAs: land on the idea textarea, not the photo ----
+    const ta = root.getElementById('ideaText');
+    root.querySelectorAll('a[href="#ideaForm"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        setTimeout(() => { if (ta) { try { ta.focus({ preventScroll: true }); } catch (e) {} } }, 650);
+      });
+    });
+});
+</script>
+</body>
+</html>

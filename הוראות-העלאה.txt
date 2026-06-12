@@ -1,0 +1,11 @@
+NofarAI — קבצים מוכנים ל-GitHub
+
+1. פתחי את קובץ ה-ZIP וחלצי אותו.
+2. ב-GitHub היכנסי למאגר landing.
+3. לחצי Add file ואז Upload files.
+4. גררי את כל הקבצים שבתיקייה NofarAI_GitHub_Ready יחד.
+5. ודאי ש-index.html וכל התמונות/הסרטונים מופיעים באותה רשימה.
+6. לחצי Commit changes.
+7. חכי לוי הירוק ורענני את האתר עם Command + Shift + R.
+
+חשוב: להעלות את הקבצים עצמם, לא את קובץ ה-ZIP.
